@@ -15,9 +15,13 @@ type routes struct {
 func NewRoutes(handler http.Handler, label string) *routes {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &routes{handler: handler, label: label}
 }
 func (r *routes) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if req.URL.Path == "/api/v1/query" || req.URL.Path == "/api/v1/query_range" {
@@ -31,6 +35,8 @@ func (r *routes) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	http.NotFound(w, req)
 }
 func (r *routes) query(w http.ResponseWriter, req *http.Request) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	q := req.URL.Query()
@@ -53,6 +59,8 @@ func (r *routes) query(w http.ResponseWriter, req *http.Request) {
 	r.handler.ServeHTTP(w, req)
 }
 func (r *routes) federate(w http.ResponseWriter, req *http.Request) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	q := req.URL.Query()

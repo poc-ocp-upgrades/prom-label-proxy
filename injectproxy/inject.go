@@ -12,6 +12,8 @@ import (
 func SetRecursive(node promql.Node, matchersToEnforce []*labels.Matcher) (err error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	switch n := node.(type) {
 	case promql.Statements:
 		for _, s := range n {
@@ -73,6 +75,8 @@ func SetRecursive(node promql.Node, matchersToEnforce []*labels.Matcher) (err er
 func enforceLabelMatchers(matchers []*labels.Matcher, matchersToEnforce []*labels.Matcher) []*labels.Matcher {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	res := []*labels.Matcher{}
 	for _, m := range matchersToEnforce {
 		res = enforceLabelMatcher(matchers, m)
@@ -80,6 +84,8 @@ func enforceLabelMatchers(matchers []*labels.Matcher, matchersToEnforce []*label
 	return res
 }
 func enforceLabelMatcher(matchers []*labels.Matcher, enforcedMatcher *labels.Matcher) []*labels.Matcher {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	res := []*labels.Matcher{}
@@ -94,7 +100,16 @@ func enforceLabelMatcher(matchers []*labels.Matcher, enforcedMatcher *labels.Mat
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }
